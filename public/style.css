@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #74b9ff 0%, #0984e3 50%, #6c5ce7 100%);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Sky Animations */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
+        linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+    animation: skyGlow 20s ease-in-out infinite alternate;
+    z-index: -2;
+}
+
+@keyframes skyGlow {
+    0% { opacity: 0.8; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.05); }
+}
+
+.cloud {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50px;
+    animation: float linear infinite;
+}
+
+.cloud:nth-child(1) { width: 100px; height: 40px; top: 20%; left: -100px; animation-duration: 40s; }
+.cloud:nth-child(2) { width: 80px; height: 30px; top: 40%; left: -80px; animation-duration: 35s; animation-delay: -10s; }
+.cloud:nth-child(3) { width: 120px; height: 50px; top: 60%; left: -120px; animation-duration: 45s; animation-delay: -20s; }
+
+@keyframes float {
+    0% { transform: translateX(-100px); }
+    100% { transform: translateX(calc(100vw + 100px)); }
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+header h1 {
+    text-align: center;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    margin-bottom: 30px;
+    animation: slideDown 1s ease-out;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.search-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    animation: slideUp 1s ease-out 0.3s both;
+}
+
+#city-input {
+    flex: 1;
+    padding: 18px 25px;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#city-input:focus {
+    transform: scale(1.02);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+}
+
+#search-button {
+    padding: 18px 30px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(45deg, #ff6b6b, #feca57);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 8px 32px rgba(255, 107, 107, 0.4);
+    transition: all 0.3s ease;
+}
+
+#search-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(255, 107, 107, 0.6);
+}
+
+.weather-display {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.4s ease;
+    animation: slideUp 1s ease-out 0.6s both;
+}
+
+.weather-display:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+}
+
+#city-name {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+#temperature {
+    font-size: 3rem;
+    font-weight: 300;
+    color: white;
+    margin: 10px 0;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+#humidity, #wind-speed {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 15px 0;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+    .container { padding: 10px; }
+    #temperature { font-size: 3rem; }
+    .weather-display { padding: 30px 20px; }
+}
